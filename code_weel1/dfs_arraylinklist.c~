@@ -1,0 +1,106 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+void print();
+
+struct arraylist
+{
+int data;
+struct arraylist *next;
+};
+struct arraylist *a[10];
+
+
+
+void addarray(int i,int value)
+{
+	struct arraylist *temp=NULL,*temp1=NULL;
+	temp=(struct arraylist*) malloc(sizeof(struct arraylist));
+temp1=a[i];
+	if(a[i]==NULL)
+	{
+		a[i] = temp;
+ 		temp->next = NULL;
+		temp->data = value;
+                
+
+	}
+
+	else
+	{
+		temp->data=value;
+                temp->next=NULL;
+		while(temp1->next!=NULL)
+		{
+			temp1=temp1->next;
+                        
+		}
+		temp1->next=temp;
+	}
+	
+	free(temp);
+}
+
+
+
+
+
+int main()
+{
+int i,k=0,data,index;
+
+	for(i=0;i<10;i++)
+	{
+	 a[i]=NULL;
+	}
+//while(k!=1)
+//{
+/*
+printf("\n input index");
+scanf("%d",&index);
+printf("\n input data");
+scanf("%d",&data);
+*/
+addarray(6,78);addarray(6,99);
+//printf("\ninput 1 to terminate and print array other to continue");
+//scanf("%d",&k);
+//}
+//printf("\n** %d",a[0]->data);
+print();
+}
+void print()
+{
+int i;
+struct arraylist *temp=NULL;
+	for(i=0;i<10;i++)
+	{
+	printf("\n");
+temp=a[i];
+
+             	if(temp!=NULL)
+
+		{
+			while(temp!=NULL)
+			{
+			 printf("%d ",temp->data);
+			 temp=temp->next;
+			}
+		}
+              else
+		{
+			printf("\n empty");
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
